@@ -1,1 +1,1 @@
-export {default, initialize} from 'ember-frost-core/initializers/frost-page-title'
+export {default, initialize} from 'ember-frost-page-title/initializers/frost-page-title'

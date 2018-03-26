@@ -25,7 +25,7 @@ describe(test.label, function () {
   describe('update', function () {
     it('should use default when sections is empty', function () {
       service.updateTitle()
-      expect(document.title).to.equal('ember-frost-core tests')
+      expect(document.title).to.equal('ember-frost-page-title tests')
     })
 
     it('should use values from sections if not empty', function () {

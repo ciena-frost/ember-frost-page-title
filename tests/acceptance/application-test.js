@@ -25,7 +25,7 @@ describe('Acceptance: Application', function () {
     })
 
     it('should have default title provided by frost-page-title', function () {
-      expect(document.title).to.equal('ember-frost-core tests')
+      expect(document.title).to.equal('ember-frost-page-title tests')
     })
 
     it('should redirect correct route', function () {

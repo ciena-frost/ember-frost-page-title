@@ -1,1 +1,1 @@
-export {default} from 'ember-frost-core/components/frost-page-title'
+export {default} from 'ember-frost-page-title/components/frost-page-title'
