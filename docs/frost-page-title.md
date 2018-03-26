@@ -8,13 +8,13 @@ The frost-page-title `addon` primarily provides a Route Mixin for dynamically ha
 * [Examples](#examples)
 
 ## Basic Usage
-The simplest way to use the frost-page-title `addon` is to set an app's default title on the `APP['frost-page-title-default']` property in `config/environment.js`, and __remove the title tag__ from the app's index.html, as the title will be set on build by the initializer.
+The simplest way to use the frost-page-title `addon` is to set an app's default title on the `APP['frost-page-title-default']` property in `config/environment.js`, and __replace the title tag with the content-for helper__ the app's index.html, as the title will be set on build by the initializer.
 ```
 // config/environment.js
 ...
 	APP: {
       'frost-page-title-default': 'My App'
-      'frost-page-title-delimiter: '🍺'
+      'frost-page-title-delimiter': '🍺'
       ...
     }
 ...
@@ -23,7 +23,7 @@ The simplest way to use the frost-page-title `addon` is to set an app's default 
 // app/index.html - remove title tag
 ...
 - <title>My App</title>
-+
++ <title>{{content-for page-title}}</title>
 ...
 ```
 
@@ -137,7 +137,7 @@ import FrostPageTitleMixin from 'ember-frost-page-title/mixins/frost-page-title'
 export default Route.extend(FrostPageTitleMixin, {
 ...
   frostPageTitle (sections, defaultTitle) {
-    return sections.concat(['Child']
+    return sections.concat(['Child'])
   }
 ...
 })

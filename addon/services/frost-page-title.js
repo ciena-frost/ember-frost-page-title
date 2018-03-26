@@ -17,8 +17,8 @@ export default Service.extend({
 
   sections: [],
 
-  defaultHandler () {
-    const sections = window.location.hash.match(/[^/]+/g)
+  defaultHandler (url = window.location.pathname) {
+    const sections = url.match(/[^/]+/g)
 
     // return default title if we have no hash to work with
     if (!sections) {
@@ -35,8 +35,8 @@ export default Service.extend({
       })
   },
 
-  resetSections () {
-    this.set('sections', this.defaultHandler())
+  resetSections (url) {
+    this.set('sections', this.defaultHandler(url))
   },
 
   updateTitle () {

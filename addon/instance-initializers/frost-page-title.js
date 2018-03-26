@@ -17,7 +17,17 @@ export function initialize (applicationInstance) {
   const usedToDidTransition = router.didTransition
   const usedToWillTransition = router.willTransition
 
-  router.willTransition = function () {
+  router.willTransition = function (oldInfos, newInfos, transition) {
+    // the router handles normal links and link-to helpers a little differently
+    // here we try to use the intent.name that comes with a link-to
+    // and fallback to intent.url if we don't get that
+    let url = transition.intent.name
+    if (url) {
+      url = url.replace(/\./g, '/')
+    } else {
+      url = transition.intent.url
+    }
+
     // call previously set willTransition if it exists and is a function
     // this should handle laddering up if it is set
     if (typeof usedToWillTransition === 'function') {
@@ -28,7 +38,7 @@ export function initialize (applicationInstance) {
       this._super(...arguments)
     }
 
-    this.get('frost-page-title').resetSections()
+    this.get('frost-page-title').resetSections(url)
   }
 
   router.didTransition = function () {

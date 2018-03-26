@@ -9,6 +9,14 @@ const Router = EmberRouter.extend({
 })
 
 Router.map(function () {
+  this.route('default-title', function () {
+    this.route('nested')
+  })
+  this.route('override-default')
+
+  this.route('custom-title', function () {
+    this.route('nested')
+  })
 })
 
 export default Router
