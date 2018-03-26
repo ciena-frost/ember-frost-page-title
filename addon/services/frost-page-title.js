@@ -13,6 +13,8 @@ const {APP} = config
 export default Service.extend({
   defaultTitle: APP['frost-page-title-default'],
 
+  delimiter: APP['frost-page-title-delimiter'],
+
   sections: [],
 
   defaultHandler () {
@@ -39,8 +41,9 @@ export default Service.extend({
 
   updateTitle () {
     const sections = this.get('sections')
+    const delimiter = this.get('delimiter') || '|'
     if (sections.length) {
-      document.title = sections.join(' | ')
+      document.title = sections.join(` ${delimiter} `)
     } else {
       document.title = this.get('defaultTitle')
     }

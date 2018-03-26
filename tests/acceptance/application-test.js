@@ -11,7 +11,7 @@ describe('Acceptance: Application', function () {
 
   before(function () {
     application = startApp()
-    server.loadFixtures()
+    // server.loadFixtures()
   })
 
   after(function () {
