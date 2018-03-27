@@ -44,7 +44,8 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.rootURL = '/ember-frost-page-title'
+    ENV.isDemo = true
   }
 
   return ENV
