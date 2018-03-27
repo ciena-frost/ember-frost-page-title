@@ -9,23 +9,8 @@ module.exports = function (defaults) {
     },
     'ember-cli-babel': {
       includePolyfill: true
-    },
-    sassOptions: {
-      includePaths: [
-        'addon/styles'
-      ]
-    },
-    snippetPaths: [
-      'code-snippets'
-    ],
-    snippetSearchPaths: [
-      'tests/dummy'
-    ]
+    }
   })
-
-  app.import('bower_components/highlightjs/styles/github.css')
-  app.import(app.project.addonPackages['ember-source']
-    ? 'vendor/ember/ember-template-compiler.js' : 'bower_components/ember/ember-template-compiler.js')
 
   return app.toTree()
 }
