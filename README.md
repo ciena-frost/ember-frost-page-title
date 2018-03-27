@@ -1,6 +1,7 @@
 # ember-frost-page-title
 
-This README outlines the details of collaborating on this Ember addon.
+This addon provides automatic page title generation, as well as a `Mixin` for extending/overriding its behavior.
+For more information see [docs/frost-page-title.md](docs/frost-page-title.md).
 
 ## Installation
 
@@ -16,7 +17,7 @@ This README outlines the details of collaborating on this Ember addon.
 
 ## Running Tests
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
+* `npm test` (Runs linters and tests)
 * `ember test`
 * `ember test --server`
 
