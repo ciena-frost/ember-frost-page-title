@@ -44,7 +44,12 @@ export default Service.extend({
       .filter(section => !/[^A-Za-z-]/.test(section))
       .map(section => {
         return section.split('-')
-          .map(word => EmberString.capitalize(word))
+          .map((word, idx) => {
+            if (idx === 0) {
+              return EmberString.capitalize(word)
+            }
+            return word
+          })
           .join(' ')
       })
   },
