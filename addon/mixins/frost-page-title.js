@@ -23,7 +23,7 @@ export default Mixin.create({
 
     const titleService = this.get('frostPageTitleService')
 
-    // if we have a handler, push it into the handlers array
+    // if we have a handler, add it to the service's handlers
     if (typeof this._frostPageTitle === 'function') {
       titleService.addHandler(this._frostPageTitle)
     }
@@ -34,7 +34,7 @@ export default Mixin.create({
 
     const titleService = this.get('frostPageTitleService')
 
-    // if we have a handler, remove it from the handlers array
+    // if we have a handler, remove it from the service's handlers
     if (typeof this._frostPageTitle === 'function') {
       titleService.removeHandler(this._frostPageTitle)
     }

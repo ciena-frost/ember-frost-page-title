@@ -18,9 +18,9 @@ export default Service.extend({
   _handlers: [],
 
   /**
-   * adds a handler to the array
+   * adds a handler to the _handlers array
    * @param {function} handler - a title handler
-   *   - should be bound and saved so that it can be removed
+   *  - should be bound and saved so that it can be removed
    */
   addHandler (handler) {
     this.get('_handlers').push(handler)
@@ -49,10 +49,19 @@ export default Service.extend({
       })
   },
 
+  /**
+   * removes a handler from the _handlers array
+   * @param {function} handler - a title handler
+   *  - should be a reference to a handler added to the array previously
+   */
   removeHandler (handler) {
     this.set('_handlers', this.get('_handlers').filter(_handler => handler !== _handler))
   },
 
+  /**
+   * updates the title by running the handlers
+   * @param {string} url - url to parse with default handler
+   */
   updateTitle (url) {
     const defaultTitle = this.get('defaultTitle')
     const handlers = this.get('_handlers')

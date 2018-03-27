@@ -27,7 +27,7 @@ export function initialize (applicationInstance) {
       this._super(...arguments)
     }
 
-    // set title
+    // set title using url we set in willTransition
     this.get('frost-page-title').updateTitle(this.get('_frostPageTitleUrl'))
   }
 
