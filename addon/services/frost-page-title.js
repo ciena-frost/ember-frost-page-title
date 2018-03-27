@@ -15,9 +15,23 @@ export default Service.extend({
 
   delimiter: APP['frost-page-title-delimiter'],
 
-  sections: [],
+  _handlers: [],
 
-  defaultHandler (url = window.location.pathname) {
+  /**
+   * adds a handler to the array
+   * @param {function} handler - a title handler
+   *   - should be bound and saved so that it can be removed
+   */
+  addHandler (handler) {
+    this.get('_handlers').push(handler)
+  },
+
+  /**
+   * the default title handler
+   * @param {string} url - current url, either from the router transition or window.location
+   * @returns {array} - array of title sections
+   */
+  defaultHandler (url = window.location.hash || window.location.pathname) {
     const sections = url.match(/[^/]+/g)
 
     // return default title if we have no hash to work with
@@ -35,17 +49,22 @@ export default Service.extend({
       })
   },
 
-  resetSections (url) {
-    this.set('sections', this.defaultHandler(url))
+  removeHandler (handler) {
+    this.set('_handlers', this.get('_handlers').filter(_handler => handler !== _handler))
   },
 
-  updateTitle () {
-    const sections = this.get('sections')
+  updateTitle (url) {
+    const defaultTitle = this.get('defaultTitle')
+    const handlers = this.get('_handlers')
     const delimiter = this.get('delimiter') || '|'
+    const sections = handlers.reduce((acc, handler) => {
+      return handler(acc, defaultTitle)
+    }, this.defaultHandler(url))
+
     if (sections.length) {
       document.title = sections.join(` ${delimiter} `)
     } else {
-      document.title = this.get('defaultTitle')
+      document.title = defaultTitle
     }
   }
 })

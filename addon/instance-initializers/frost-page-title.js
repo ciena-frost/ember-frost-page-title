@@ -17,6 +17,20 @@ export function initialize (applicationInstance) {
   const usedToDidTransition = router.didTransition
   const usedToWillTransition = router.willTransition
 
+  router.didTransition = function () {
+    // call previously set didTransition if it exists and is a function
+    // this should handle laddering up if it is set
+    if (typeof usedToDidTransition === 'function') {
+      usedToDidTransition.apply(router, arguments)
+    // otherwise ladder just up
+    } else {
+      this._super(...arguments)
+    }
+
+    // set title
+    this.get('frost-page-title').updateTitle(this.get('_frostPageTitleUrl'))
+  }
+
   router.willTransition = function (oldInfos, newInfos, transition) {
     // the router handles normal links and link-to helpers a little differently
     // here we try to use the intent.name that comes with a link-to
@@ -38,22 +52,7 @@ export function initialize (applicationInstance) {
       this._super(...arguments)
     }
 
-    this.get('frost-page-title').resetSections(url)
-  }
-
-  router.didTransition = function () {
-    // call previously set didTransition if it exists and is a function
-    // this should handle laddering up if it is set
-    if (typeof usedToDidTransition === 'function') {
-      usedToDidTransition.apply(router, arguments)
-
-    // otherwise ladder just up
-    } else {
-      this._super(...arguments)
-    }
-
-    // set title
-    this.get('frost-page-title').updateTitle()
+    this.set('_frostPageTitleUrl', url)
   }
 }
 

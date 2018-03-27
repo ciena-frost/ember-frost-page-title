@@ -11,7 +11,6 @@ describe('Acceptance: Application', function () {
 
   before(function () {
     application = startApp()
-    // server.loadFixtures()
   })
 
   after(function () {
@@ -25,51 +24,25 @@ describe('Acceptance: Application', function () {
     })
 
     it('should have default title provided by frost-page-title', function () {
-      expect(document.title).to.equal('ember-frost-page-title tests')
-    })
-
-    it('should redirect correct route', function () {
-      expect(currentPath()).to.equal('demo')
+      expect(/ember-frost-page-title tests/.test(document.title)).to.eql(true)
     })
   })
 
   ;[
-    'area',
-    'bookends',
-    'button',
-    'checkbox',
-    'field',
-    'helpers',
-    'icons',
-    'layout',
-    'loading',
-    'palette',
-    'password',
-    'radio',
-    'scroll',
-    'select',
-    'toggle',
-    'typography'
+    ['custom-title', 'Hello | Custom | Title'],
+    ['custom-title/nested', 'Hello | Custom | (Nested) Title'],
+    ['default-title', 'Default Title'],
+    ['default-title/nested', 'Default Title | Nested']
   ]
-    .forEach((path) => {
+    .forEach(([path, title]) => {
       describe(`visit /${path}`, function () {
         beforeEach(function () {
           return visit(`/${path}`)
         })
 
-        it('should render correct route', function () {
-          expect(currentPath()).to.equal(path)
+        it(`should write correct title for path: ${path}`, function () {
+          expect(document.title).to.eql(title)
         })
       })
     })
-
-  describe('visit /link', function () {
-    beforeEach(function () {
-      return visit('/link')
-    })
-
-    it('should render correct route', function () {
-      expect(currentPath()).to.equal('link.index')
-    })
-  })
 })
