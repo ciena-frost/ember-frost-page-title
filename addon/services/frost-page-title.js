@@ -74,6 +74,7 @@ export default Service.extend({
     const sections = handlers.reduce((acc, handler) => {
       return handler(acc, defaultTitle)
     }, this.defaultHandler(url))
+      .filter(section => !!section)
 
     if (sections.length) {
       document.title = sections.join(` ${delimiter} `)
