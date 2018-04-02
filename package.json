@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-page-title",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "An Extensible Page Title Handler",
   "keywords": [
     "ember-addon"
