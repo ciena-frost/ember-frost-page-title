@@ -11,9 +11,9 @@ const {Service, String: EmberString} = Ember
 const {APP} = config
 
 export default Service.extend({
-  defaultTitle: APP['frost-page-title-default'],
+  defaultTitle: APP.frostPageTitle.defaultTitle,
 
-  delimiter: APP['frost-page-title-delimiter'],
+  delimiter: APP.frostPageTitle.delimiter,
 
   _handlers: [],
 

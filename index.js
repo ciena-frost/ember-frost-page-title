@@ -12,13 +12,13 @@ module.exports = {
    */
   contentFor: function (type, config) {
     // fail if we don't have a default for frost-page-title in the config
-    if (!config.APP || !config.APP['frost-page-title-default']) {
+    if (!config.APP || !config.APP.frostPageTitle.defaultTitle) {
       return
     }
 
     // insert default page title
     if (type === 'page-title') {
-      return config.APP['frost-page-title-default']
+      return config.APP.frostPageTitle.defaultTitle
     }
   }
 }
