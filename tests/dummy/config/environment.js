@@ -20,7 +20,7 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      frostPageTitle: {
+      'frost-page-title': {
         defaultTitle: 'ember-frost-page-title tests'
       }
     }

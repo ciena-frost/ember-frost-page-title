@@ -1,5 +1,6 @@
 /**
- * @overview Dynamically overwrites document's title based on a default handler
+ * @overview 
+ * Dynamically overwrites document's title based on a default handler
  * and custom handlers which may be placed on individual routes via the
  * frost-page-title mixin
  */
@@ -11,9 +12,9 @@ const {Service, String: EmberString} = Ember
 const {APP} = config
 
 export default Service.extend({
-  defaultTitle: APP.frostPageTitle.defaultTitle,
+  defaultTitle: APP['frost-page-title'].defaultTitle,
 
-  delimiter: APP.frostPageTitle.delimiter,
+  delimiter: APP['frost-page-title'].delimiter,
 
   _handlers: [],
 

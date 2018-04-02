@@ -9,7 +9,7 @@ const {APP} = config
 
 export function initialize (applicationInstance) {
   // fail if no default set for service
-  if (!APP.frostPageTitle.defaultTitle) {
+  if (!APP['frost-page-title'].defaultTitle) {
     return
   }
 
