@@ -4,7 +4,7 @@ import FrostPageTitleMixin from 'ember-frost-page-title/mixins/frost-page-title'
 const {Route} = Ember
 
 export default Route.extend(FrostPageTitleMixin, {
-  frostPageTitle (sections, defaultTitle) {
+  pageTitleHandler (sections, defaultTitle) {
     return sections.map(section => {
       if (section === 'Title') {
         return `(Nested) ${section}`

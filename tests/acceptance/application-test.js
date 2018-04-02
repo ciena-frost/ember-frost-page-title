@@ -31,8 +31,8 @@ describe('Acceptance: Application', function () {
   ;[
     ['custom-title', 'Hello | Custom | Title'],
     ['custom-title/nested', 'Hello | Custom | (Nested) Title'],
-    ['default-title', 'Default Title'],
-    ['default-title/nested', 'Default Title | Nested']
+    ['default-title', 'Default title'],
+    ['default-title/nested', 'Default title | Nested']
   ]
     .forEach(([path, title]) => {
       describe(`visit /${path}`, function () {

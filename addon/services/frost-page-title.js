@@ -1,5 +1,6 @@
 /**
- * @overview Dynamically overwrites document's title based on a default handler
+ * @overview
+ * Dynamically overwrites document's title based on a default handler
  * and custom handlers which may be placed on individual routes via the
  * frost-page-title mixin
  */
@@ -11,9 +12,9 @@ const {Service, String: EmberString} = Ember
 const {APP} = config
 
 export default Service.extend({
-  defaultTitle: APP['frost-page-title-default'],
+  defaultTitle: APP['frost-page-title'].defaultTitle,
 
-  delimiter: APP['frost-page-title-delimiter'],
+  delimiter: APP['frost-page-title'].delimiter,
 
   _handlers: [],
 
@@ -41,12 +42,8 @@ export default Service.extend({
 
     // filter and map sections to words
     return sections
-      .filter(section => !/[^A-Za-z-]/.test(section))
-      .map(section => {
-        return section.split('-')
-          .map(word => EmberString.capitalize(word))
-          .join(' ')
-      })
+      .filter(section => section && !/[^A-Za-z-]/.test(section))
+      .map(section => EmberString.capitalize(section.replace(/-/g, ' ')))
   },
 
   /**
@@ -65,15 +62,13 @@ export default Service.extend({
   updateTitle (url) {
     const defaultTitle = this.get('defaultTitle')
     const handlers = this.get('_handlers')
-    const delimiter = this.get('delimiter') || '|'
+    const delimiter = this.getWithDefault('delimiter', '|')
     const sections = handlers.reduce((acc, handler) => {
+      acc = acc.filter(section => !!section)
       return handler(acc, defaultTitle)
     }, this.defaultHandler(url))
+      .filter(section => !!section)
 
-    if (sections.length) {
-      document.title = sections.join(` ${delimiter} `)
-    } else {
-      document.title = defaultTitle
-    }
+    document.title = sections.length ? sections.join(` ${delimiter} `) : defaultTitle
   }
 })

@@ -13,8 +13,8 @@ export default Mixin.create({
     this._super(...arguments)
 
     // set a bound copy of our title handler if we have one
-    if (typeof this.frostPageTitle === 'function') {
-      this.set('_frostPageTitle', this.frostPageTitle.bind(this))
+    if (typeof this.pageTitleHandler === 'function') {
+      this.set('_pageTitleHandler', this.pageTitleHandler.bind(this))
     }
   },
 
@@ -24,8 +24,8 @@ export default Mixin.create({
     const titleService = this.get('frostPageTitleService')
 
     // if we have a handler, add it to the service's handlers
-    if (typeof this._frostPageTitle === 'function') {
-      titleService.addHandler(this._frostPageTitle)
+    if (typeof this._pageTitleHandler === 'function') {
+      titleService.addHandler(this._pageTitleHandler)
     }
   },
 
@@ -35,8 +35,8 @@ export default Mixin.create({
     const titleService = this.get('frostPageTitleService')
 
     // if we have a handler, remove it from the service's handlers
-    if (typeof this._frostPageTitle === 'function') {
-      titleService.removeHandler(this._frostPageTitle)
+    if (typeof this._pageTitleHandler === 'function') {
+      titleService.removeHandler(this._pageTitleHandler)
     }
   }
 })

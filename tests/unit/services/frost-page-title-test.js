@@ -45,7 +45,7 @@ describe(test.label, function () {
   describe('defaultHandler', function () {
     it('should return capitalized version of words from window.location.hash', function () {
       window.location.hash = '/foo-bar'
-      expect(service.defaultHandler()).to.eql(['Foo Bar'])
+      expect(service.defaultHandler()).to.eql(['Foo bar'])
     })
 
     it('should ignore non-wordy things', function () {
