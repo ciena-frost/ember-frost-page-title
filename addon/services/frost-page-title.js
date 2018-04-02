@@ -1,5 +1,5 @@
 /**
- * @overview 
+ * @overview
  * Dynamically overwrites document's title based on a default handler
  * and custom handlers which may be placed on individual routes via the
  * frost-page-title mixin
