@@ -42,16 +42,7 @@ export default Service.extend({
     // filter and map sections to words
     return sections
       .filter(section => !/[^A-Za-z-]/.test(section))
-      .map(section => {
-        return section.split('-')
-          .map((word, idx) => {
-            if (idx === 0) {
-              return EmberString.capitalize(word)
-            }
-            return word
-          })
-          .join(' ')
-      })
+      .map(section => EmberString.capitalize(section.replace(/-/g, ' ')))
   },
 
   /**
