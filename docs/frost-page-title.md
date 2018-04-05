@@ -64,6 +64,30 @@ The `defaultHandler` method takes a url (defaulted to `window.location.hash` or 
 ### #updateTitle()
 The `updateTitle` function runs runs the `defaultHandler` and the hanslers built up by routes using the mixin and joins them with either a "|" or whatever you set in your config for `APP['frost-page-title'].delimiter` (see example above).
 
+## Details page title factory util
+Provided with this addon is a util that handles the default behavior for our details pages. They typically get the title from a display attribute in the model, and append the name of the currently selected tab (automatically capitalized and de-deasherized). For example:
+
+```
+// some route
+
+import pageTitleFactory from 'ember-frost-page-title/utils/details-page-title-factory'
+...
+  pageTitleHandler: pageTitleFactory('displayData.displayTitle')
+...
+```
+
+So if your url is /somethings-details/selectedTabId=secret-details, and your data looks like this:
+
+```
+{
+  displayData: {
+    'Some thing'
+  }
+}
+```
+
+Your title will be `Some thing | Secret details`
+
 ## Examples
 
 ### Default
