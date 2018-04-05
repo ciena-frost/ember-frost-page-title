@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import pageTitleFactory from 'ember-frost-page-title/utils/details-page-title-factory'
-import {afterEach, beforeEach, describe, it} from 'mocha'
+import {beforeEach, describe, it} from 'mocha'
 
 describe('Unit / utils / details-page-title-factory /', function () {
   let dummyRoute
