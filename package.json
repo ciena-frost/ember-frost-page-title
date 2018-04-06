@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-page-title",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Extensible Page Title Handler",
   "keywords": [
     "ember-addon"
@@ -62,6 +62,6 @@
     "configPath": "tests/dummy/config"
   },
   "pr-bumper": {
-    "coverage": 86.9
+    "coverage": 87.37
   }
 }

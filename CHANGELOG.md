@@ -1,3 +1,8 @@
+# 1.1.0 (2018-04-06)
+
+* Added factory for BP details page behavior that is shared across many apps.
+
+
 # 1.0.0 (2018-04-02)
 
 * Changed to only title-case first word in a section
