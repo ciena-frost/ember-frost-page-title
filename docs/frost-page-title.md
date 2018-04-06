@@ -62,7 +62,7 @@ The service provides a `defaultHandler` and an `updateTitle` method for updating
 The `defaultHandler` method takes a url (defaulted to `window.location.hash` or `window.location.pathname`, splits it on each `/`, discards anything that doesn't look like words, converting each `-` into a space and capitalizing each word. Example: `/myapp/#/foo-bar/baz` would become `['foo bar', 'baz']`, which the update method would convert to a page title of `Foo Bar | Baz`.
 
 ### #updateTitle()
-The `updateTitle` function runs runs the `defaultHandler` and the hanslers built up by routes using the mixin and joins them with either a "|" or whatever you set in your config for `APP['frost-page-title'].delimiter` (see example above).
+The `updateTitle` function runs runs the `defaultHandler` and the handlers built up by routes using the mixin and joins them with either a "|" or whatever you set in your config for `APP['frost-page-title'].delimiter` (see example above).
 
 ## Details page title factory util
 Provided with this addon is a util that handles the default behavior for our details pages. They typically get the title from a display attribute in the model, and append the name of the currently selected tab (automatically capitalized and de-deasherized). For example:
