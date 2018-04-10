@@ -1,3 +1,9 @@
+# 1.2.0 (2018-04-10)
+
+* improved details page title handler
+* improved behavior for testing in the wild
+
+
 # 1.1.0 (2018-04-06)
 
 * Added factory for BP details page behavior that is shared across many apps.
