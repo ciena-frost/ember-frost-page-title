@@ -16,8 +16,6 @@ export default Service.extend({
 
   delimiter: APP['frost-page-title'].delimiter,
 
-  _handlers: [],
-
   /**
    * adds a handler to the _handlers array
    * @param {function} handler - a title handler
@@ -70,5 +68,10 @@ export default Service.extend({
       .filter(section => !!section)
 
     document.title = sections.length ? sections.join(` ${delimiter} `) : defaultTitle
+  },
+
+  init () {
+    this._super(...arguments)
+    this._handlers = []
   }
 })
