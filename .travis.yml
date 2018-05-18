@@ -3,8 +3,7 @@ dist: trusty
 language: node_js
 
 node_js:
-- '8.1.2'
-- 'stable'
+- $PUBLISH_NODE_VERSION
 
 addons:
   apt:
@@ -29,8 +28,6 @@ env:
     - secure: RgFwNvPtIes7sset5uwaJE06hNrfHohtN8QDGUv5egUHZspM9H6NlolO06GvPe8n8xqVkbDdaCoNo74cE9PJusp6o3CNnyrNt4W+fJ+BmJCtt66Y7gZTAHllrAykFl5udbq9hU1Y2nfFq4KSKMcO6Jg9f5CXwPpDHAiVjzF9sJMcqctiU6l61fR6HUYHGwpd5o085HmRk8pRJh4WugDdnUGgbDqenEbwT3PNdnYwEkr7C/WfrvVH8zJh8rp8+13CEmycx7lyZ6uUfJfjQliGT653zH56XZP7Uz1PdUTv9yGB7hYAaVLKJqJnyGMKKVvlO1JEFu55BzjEnAbzLQw6yNMEUFVKurGtr78OAGkNQ2evn18wTy6GD4oK+573cZkSiLyuHpsq9OMkCOglCE5l8/XEYXOUwu+HLANBmIqfmzMjdgiWrmZy/vhJ6piYiQSU62dI9BZ88AebMRPzgIv7IFgph9IB1fgUK/L4IFaAg3McpZVtET3ekVRhwjkQ5PBKCZOSXp3B51XsXtSHVPe1yMZgMA2dQ5FVMCfM2jiujziaMwVK8nOhbnFwv1xLlxztIFY+FmeSDyS0nGY5v6by7XXvSMN6fcGkTJ71b8q4bBdDV/3AYaqLNGlcDldTRe+eYJCjMl7BDvK8BPb3mwaDRjRBQPS2yfFbn44obG2VQ/M=
 matrix:
   fast_finish: true
-  allow_failures:
-  - node_js: 'stable'
 
 before_install:
 - npm config set spin false
@@ -64,7 +61,7 @@ deploy:
   on:
     all_branches: true
     condition: "$EMBER_TRY_SCENARIO = 'ember-default'"
-    node: '8.1.2'
+    node: $PUBLISH_NODE_VERSION
     tags: true
 
 after_deploy:
